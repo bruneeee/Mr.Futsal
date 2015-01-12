@@ -5,9 +5,12 @@
     <string name="title_section1">HOME</string>
     <string name="title_section2">SQUADRE</string>
     <string name="title_section3">GIOCATORI</string>
+    <string name="title_section4">MENU4</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="action_settings">Settings</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
-
+    <string name="sql_create_giocatore">CREATE TABLE IF NOT EXISTS giocatore(id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE,nome VARCHAR NOT NULL,cognome VARCHAR NOT NULL,dataNascita DATE NOT NULL,descrizione VARCHAR NOT NULL,id_ruolo INTEGER NOT NULL,id_squadra INTEGER NOT NULL);</string>
+    <string name="sql_create_ruolo">CREATE TABLE IF NOT EXISTS ruolo(id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE, descr VARCHAR NOT NULL);</string>
+    <string name="sql_add_giocatore">INSERT INTO giocatore ( id,nome,cognome,dataNascita,descrizione,id_ruolo,id_squadra )VALUES ( 1,\'Torres\',\'Fernando\',\'1984/04/20\',\'Descr\',1,1 )</string>
 </resources>

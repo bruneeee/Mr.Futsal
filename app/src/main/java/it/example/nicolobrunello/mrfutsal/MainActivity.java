@@ -1,24 +1,19 @@
 package it.example.nicolobrunello.mrfutsal;
 
 import android.app.Activity;
-
 import android.app.ActionBar;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
-import android.content.Context;
-import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.support.v4.widget.DrawerLayout;
-import android.widget.ArrayAdapter;
-import android.widget.TextView;
+
 
 
 public class MainActivity extends Activity
@@ -51,39 +46,18 @@ public class MainActivity extends Activity
 
     @Override
     public void onNavigationDrawerItemSelected(int position) {
-
-        /*FragmentManager fm = getFragmentManager();
-        FragmentTransaction ft = fm.beginTransaction();
-        // update the main content by replacing fragments
-        switch(position){
-            case(0):
-                //TODO home_fragment?
-                break;
-            case(1):
-                //TODO squadre_fragment?
-                break;
-            case(2):
-                ft.replace(R.id.container, new giocatori());
-                ft.commit();
-
-                fm.beginTransaction()
-                    .replace(R.id.container, new giocatori())
-                    .commit();
-                    break;
-        }*/
         FragmentManager fragmentManager = getFragmentManager();
-        //boolean addToBackStack = true;
         Fragment fragment = null;
         switch (position)
         {
             case 0:
-                fragment = Fragment.instantiate(this, home.class.getName());
+                fragment = Fragment.instantiate(this, ViewHome.class.getName());
                 break;
             case 1:
-                fragment = Fragment.instantiate(this, squadre.class.getName());
+                fragment = Fragment.instantiate(this, ViewSquadre.class.getName());
                 break;
             case 2:
-                fragment = Fragment.instantiate(this, giocatori.class.getName());
+                fragment = Fragment.instantiate(this, ViewGiocatori.class.getName());
                 break;
             default:
                 Log.w(this.getClass().getSimpleName(),
@@ -179,7 +153,7 @@ public class MainActivity extends Activity
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_main, container, false);
+            View rootView = inflater.inflate(R.layout.fragment_home, container, false);
             return rootView;
         }
 

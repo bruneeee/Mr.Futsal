@@ -1,12 +1,38 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" tools:context="it.example.nicolobrunello.mrfutsal.home">
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="it.example.nicolobrunello.mrfutsal.ViewHome"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center">
 
-    <!-- TODO: Update blank fragment layout -->
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="HOME"
-        android:layout_gravity="center" />
+        android:text="Mr. Futsal"
+        android:id="@+id/txttitolo"
+        android:textStyle="bold"
+        android:textSize="80sp" />
 
-</FrameLayout>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="go to squadre"
+        android:id="@+id/btnsquadre"
+        android:layout_gravity="center_horizontal" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="go to giocatori"
+        android:id="@+id/btngiocatori" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="go to new_giocatore"
+        android:id="@+id/btnnewgiocatore" />
+</LinearLayout>
+
