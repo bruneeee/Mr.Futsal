@@ -4,7 +4,6 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.TextView;
 
@@ -18,11 +17,13 @@ public class ExpAdapterGiocatori extends BaseExpandableListAdapter {
     private Context _context;
     private ArrayList<String> listdataheader;  //categorie
     private ArrayList<Giocatore> giocatori;
+    private ArrayList<Giocatore> portieri;
 
-    public ExpAdapterGiocatori (Context context,ArrayList<String> l,ArrayList<Giocatore> g){
+    public ExpAdapterGiocatori (Context context,ArrayList<String> l,ArrayList<Giocatore> g,ArrayList<Giocatore> p){
         this._context = context;
         this.listdataheader = l;
         this.giocatori = g;
+        this.portieri = p;
     }
 
     @Override
@@ -32,17 +33,27 @@ public class ExpAdapterGiocatori extends BaseExpandableListAdapter {
 
     @Override
     public int getChildrenCount(int i) {
-        return this.giocatori.size();
+        if(i == 0){
+            return this.giocatori.size();
+        }
+        else{
+            return this.portieri.size();
+        }
     }
 
     @Override
     public Object getGroup(int i) {
-        return this.giocatori.get(i);
+        return this.listdataheader.get(i);
     }
 
     @Override
     public Object getChild(int i, int i2) {
-        return this.giocatori.get(i2);
+        if(i == 0){
+            return this.giocatori.get(i2);
+        }
+        else{
+            return this.portieri.get(i2);
+        }
     }
 
     @Override

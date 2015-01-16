@@ -59,7 +59,11 @@ public class MainActivity extends Activity
             case 2:
                 fragment = Fragment.instantiate(this, ViewGiocatori.class.getName());
                 break;
+            case 3:
+                fragment = Fragment.instantiate(this, ViewPartite.class.getName());
+                break;
             default:
+                fragment = Fragment.instantiate(this, ViewHome.class.getName());
                 Log.w(this.getClass().getSimpleName(),
                         "Reached Default in onNavigationDrawerItemSelected!");
                 break;
@@ -93,6 +97,7 @@ public class MainActivity extends Activity
         ActionBar actionBar = getActionBar();
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
         actionBar.setDisplayShowTitleEnabled(true);
+
         actionBar.setTitle(mTitle);
     }
 
@@ -164,5 +169,4 @@ public class MainActivity extends Activity
                     getArguments().getInt(ARG_SECTION_NUMBER));
         }
     }
-
 }

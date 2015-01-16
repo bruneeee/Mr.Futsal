@@ -4,6 +4,7 @@ import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,17 +37,17 @@ public class ViewSquadre extends Fragment{
         final View rootView = inflater.inflate(R.layout.fragment_squadre, container, false);
         sstagione = (Spinner) rootView.findViewById(R.id.spinnerstagioni);
 
-        Stagione.deleteAll(getActivity());
+        /*//Stagione.deleteAll(getActivity());
         Stagione.addStagione(getActivity(),"2014/15");
         Stagione.addStagione(getActivity(),"2013/14");
         Stagione.addStagione(getActivity(),"2012/13");
 
-        Squadra.deleteAll(getActivity());
+        //Squadra.deleteAll(getActivity());
         Squadra.addSquadra(getActivity(),"squadra1st0",0);
         Squadra.addSquadra(getActivity(),"squadra2st0",0);
         Squadra.addSquadra(getActivity(),"squadra1st1",1);
         Squadra.addSquadra(getActivity(),"squadra1st2",2);
-        Squadra.addSquadra(getActivity(),"squadra2st2",2);
+        Squadra.addSquadra(getActivity(),"squadra2st2",2);*/
 
         stagioni = Stagione.getStagioni(getActivity());
         AdapterStagione adapterS = new AdapterStagione(getActivity(),stagioni);
@@ -88,14 +89,6 @@ public class ViewSquadre extends Fragment{
                 squadre = Squadra.getSquadre(getActivity(),0);
             }
         });
-
-
-
-
-
-
-
-
         return rootView;
     }
 }

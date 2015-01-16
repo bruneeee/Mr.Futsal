@@ -1,6 +1,5 @@
 package it.example.nicolobrunello.mrfutsal;
 
-import android.app.Activity;
 import android.content.Context;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -16,9 +15,6 @@ import java.util.ArrayList;
  */
 public class ExpAdapterDettagli extends BaseExpandableListAdapter{
 
-    private Activity activity;
-    private LayoutInflater inflater;
-
     private Context context;
     private ArrayList<Giocatore> giocatori; //Lista Giocatori?
     private ArrayList<String> statistiche;  //Lista Statistiche da Inserire?
@@ -33,48 +29,50 @@ public class ExpAdapterDettagli extends BaseExpandableListAdapter{
         this.statistiche = s;
     }
 
-    public void setInflater(LayoutInflater inflater, Activity activity) {
-        Log.e("AdapterExp","CREATO INFLATER");
-        this.inflater = inflater;
-        this.activity = activity;
-    }
-
-
-
     @Override
-    public View getGroupView(int groupPosition, boolean isExpanded,View convertView, ViewGroup parent)  {
-        Log.e("AdapterExp","CREATO GROUP");
-        convertView = inflater.inflate(R.layout.riga_head_dettagli, null);
-        //mettere Valori
-        ((TextView) convertView).setText(elementi.get(groupPosition));
-        return convertView;
-
+    public View getGroupView(int i, boolean b, View view, ViewGroup viewGroup) {
+        String title = (String) getGroup(i);
+        if(view == null)
+        {
+            LayoutInflater inflater = (LayoutInflater.from(this.context));
+            view = inflater.inflate(R.layout.riga_head_dettagli,null);
+        }
+        TextView txtNome = (TextView) view.findViewById(R.id.lbltitolo);
+        txtNome.setText(title);
+        return view;
     }
 
     @Override
-    public View getChildView(int groupPosition, final int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
+    public View getChildView(int i, int i2, boolean b, View view, ViewGroup viewGroup) {
 
 
-        if(groupPosition == 0){//fa parte dei dettagli
+        if(i == 0){//fa parte dei dettagli
             Log.e("AdapterExp","CREATO CHILD tipe0");
-            convertView = inflater.inflate(R.layout.riga_dettaglio, null);
-
-            TextView lbltitolo = (TextView) convertView.findViewById(R.id.lbltitolos);
-            TextView lblvalore = (TextView) convertView.findViewById(R.id.lblvalores);
-            lbltitolo.setText(statistiche.get(childPosition));
+            if(view == null)
+            {
+                LayoutInflater inflater = (LayoutInflater.from(this.context));
+                view = inflater.inflate(R.layout.riga_dettaglio,null);
+            }
+            TextView lbltitolo = (TextView) view.findViewById(R.id.lbltitolos);
+            TextView lblvalore = (TextView) view.findViewById(R.id.lblvalores);
+            lbltitolo.setText(statistiche.get(i2));
             lblvalore.setText("culo");
         }
         else{//fa parte dei giocatori
             Log.e("AdapterExp","CREATO CHILD tipe1");
-            convertView = inflater.inflate(R.layout.riga_giocatore, null);
-            Giocatore g = giocatori.get(childPosition);
+            if(view == null)
+            {
+                LayoutInflater inflater = (LayoutInflater.from(this.context));
+                view = inflater.inflate(R.layout.riga_giocatore,null);
+            }
+            Giocatore g = giocatori.get(i2);
 
-            TextView txtNome = (TextView) convertView.findViewById(R.id.txtnome);
-            TextView txtCognome = (TextView) convertView.findViewById(R.id.txtcognome);
-            TextView txtDataNascita = (TextView) convertView.findViewById(R.id.txtdatanascita);
-            TextView txtDescr = (TextView) convertView.findViewById(R.id.txtdescr);
-            TextView txtRuolo = (TextView) convertView.findViewById(R.id.txtruolo);
-            TextView txtSquadra = (TextView) convertView.findViewById(R.id.txtsquadra);
+            TextView txtNome = (TextView) view.findViewById(R.id.txtnome);
+            TextView txtCognome = (TextView) view.findViewById(R.id.txtcognome);
+            TextView txtDataNascita = (TextView) view.findViewById(R.id.txtdatanascita);
+            TextView txtDescr = (TextView) view.findViewById(R.id.txtdescr);
+            TextView txtRuolo = (TextView) view.findViewById(R.id.txtruolo);
+            TextView txtSquadra = (TextView) view.findViewById(R.id.txtsquadra);
 
             //ImageView imageView = (ImageView) rowView.findViewById(R.id.imageView);
 
@@ -84,42 +82,52 @@ public class ExpAdapterDettagli extends BaseExpandableListAdapter{
             txtRuolo.setText(String.valueOf(g.getIsPortiere()));
             //imageView.setImageResource(g.getImageID());
         }
-        return convertView;
+        return view;
     }
 
     @Override
     public boolean isChildSelectable(int i, int i2) {
-        return false;
+        return true;
     }
 
     @Override
          public int getGroupCount() {
-        return 0;
+        return this.elementi.size();
     }
 
     @Override
     public int getChildrenCount(int i) {
-        return 0;
+
+        if(i==0){
+             return this.statistiche.size();
+        }
+        else{
+             return this.giocatori.size();
+        }
     }
 
     @Override
     public Object getGroup(int i) {
-        return null;
+        return this.elementi.get(i);
     }
 
     @Override
     public Object getChild(int i, int i2) {
-        return null;
-    }
+        if(i==0){
+            return this.statistiche.get(i2);
+        }
+        else{
+            return this.giocatori.get(i2);
+        }    }
 
     @Override
     public long getGroupId(int i) {
-        return 0;
+        return i;
     }
 
     @Override
     public long getChildId(int i, int i2) {
-        return 0;
+        return i2;
     }
 
     @Override

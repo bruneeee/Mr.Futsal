@@ -9,6 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import java.util.ArrayList;
+
 
 public class ViewHome extends Fragment implements View.OnClickListener{
 
@@ -36,6 +38,8 @@ public class ViewHome extends Fragment implements View.OnClickListener{
         btngiocatori.setOnClickListener(this);
         btnnewgiocatore.setOnClickListener(this);
 
+        ArrayList<Partita> p = Partita.getPartite(getActivity());
+
         return rootView;
     }
     @Override
@@ -52,10 +56,10 @@ public class ViewHome extends Fragment implements View.OnClickListener{
                 fragment = Fragment.instantiate(getActivity(), ViewGiocatori.class.getName());
                 break;
             case R.id.btnnewgiocatore:
-                // codice per aprire fragment dettagliogiocatore
-                fragment = Fragment.instantiate(getActivity(), DettaglioGiocatore.class.getName());
-                Bundle bundle = new Bundle();
-                fragment.setArguments(bundle);
+                // codice per aprire fragment partite
+                fragment = Fragment.instantiate(getActivity(), ViewPartite.class.getName());
+                //Bundle bundle = new Bundle();
+                //fragment.setArguments(bundle);
                 break;
         }
         if (fragment != null){

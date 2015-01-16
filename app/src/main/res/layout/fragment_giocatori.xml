@@ -4,42 +4,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="it.example.nicolobrunello.mrfutsal.ViewGiocatori">
+    tools:context="it.example.nicolobrunello.mrfutsal.ViewGiocatori"
+    android:paddingTop="10dp"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Portieri"
-            android:id="@+id/lblportieri"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-            android:textSize="15sp"
-            android:textStyle="bold"
-            android:textColor="#347f20" />
-
-
-    <ListView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/list"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"></ListView>
-
-    <TextView
+    <ExpandableListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Difensori"
-        android:id="@+id/lbldifensori"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:textColor="#347f20" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Attaccanti"
-        android:id="@+id/lblattaccanti"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:textColor="#347f20" />
+        android:id="@+id/explistg" />
 </LinearLayout>

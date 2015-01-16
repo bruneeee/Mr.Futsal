@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ExpandableListView;
 import android.widget.ListView;
 
 
@@ -18,6 +19,8 @@ import java.util.ArrayList;
 public class ViewGiocatori extends Fragment {
 
     private ArrayList<Giocatore> giocatori = new ArrayList<Giocatore>();
+    private ArrayList<Giocatore> portieri = new ArrayList<Giocatore>();
+    private ArrayList<String> titoli = new ArrayList<String>();
 
     public ViewGiocatori() {
         // Required empty public constructor
@@ -72,36 +75,53 @@ public class ViewGiocatori extends Fragment {
         Giocatore.addGiocatore(getActivity(),"Nome2","Cognome2","11/11/1111",0);
         Giocatore.addGiocatore(getActivity(),"Nome3","Cognome3","11/11/1111",0);
         Giocatore.addGiocatore(getActivity(),"Nome4","Cognome4","11/11/1111",1);
+        Giocatore.addGiocatore(getActivity(),"Nome5","Cognome5","11/11/1111",1);
+        Giocatore.addGiocatore(getActivity(),"Nome6","Cognome6","11/11/1111",0);
+        Giocatore.addGiocatore(getActivity(),"Nome7","Cognome7","11/11/1111",0);
+        Giocatore.addGiocatore(getActivity(),"Nome8","Cognome8","11/11/1111",0);
+        Giocatore.addGiocatore(getActivity(),"Nome9","Cognome9","11/11/1111",1);
+
+        titoli.add("GIOCATORI");
+        titoli.add("PORTIERI");
+
 
         giocatori = Giocatore.getGiocatori(getActivity());
+        portieri = Giocatore.getPortieri(getActivity());
 
-        CustomList adapter = new CustomList(getActivity(),giocatori);
-        ListView list = (ListView) rootView.findViewById(R.id.list);
-        list.setAdapter(adapter);
-
-        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        ExpAdapterGiocatori adapter = new ExpAdapterGiocatori(getActivity(),titoli,giocatori,portieri);
+        ExpandableListView explist = (ExpandableListView) rootView.findViewById(R.id.explistg);
+        explist.setAdapter(adapter);
+        explist.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
+            public boolean onChildClick(ExpandableListView expandableListView, View view, int i, int i2, long l) {
                 FragmentManager fragmentManager = getFragmentManager();
                 Fragment fragment = null;
 
                 Bundle bundle = new Bundle();
-                bundle.putString("cognome",giocatori.get(i).getCognome());
-                bundle.putString("nome",giocatori.get(i).getNome());
-                bundle.putString("datanascita",giocatori.get(i).getData_n());
-                bundle.putInt("is_portiere",giocatori.get(i).getIsPortiere());
-                bundle.putInt("id",giocatori.get(i).getId());
-
+                if(i==0) {
+                    bundle.putString("cognome", giocatori.get(i2).getCognome());
+                    bundle.putString("nome", giocatori.get(i2).getNome());
+                    bundle.putString("datanascita", giocatori.get(i2).getData_n());
+                    bundle.putInt("is_portiere", giocatori.get(i2).getIsPortiere());
+                    bundle.putInt("id", giocatori.get(i2).getId());
+                }
+                else{
+                    bundle.putString("cognome", portieri.get(i2).getCognome());
+                    bundle.putString("nome", portieri.get(i2).getNome());
+                    bundle.putString("datanascita", portieri.get(i2).getData_n());
+                    bundle.putInt("is_portiere", portieri.get(i2).getIsPortiere());
+                    bundle.putInt("id", portieri.get(i2).getId());
+                }
                 fragment = Fragment.instantiate(getActivity(), DettaglioGiocatore.class.getName());
 
                 FragmentTransaction ft = fragmentManager.beginTransaction();
                 fragment.setArguments(bundle);
                 ft.replace(R.id.container, fragment);
                 ft.commit();
+
+                return false;
             }
         });
-
         //TODO manca pulsante aggiunta giocatore + gestione lista vuota
 
         return rootView;

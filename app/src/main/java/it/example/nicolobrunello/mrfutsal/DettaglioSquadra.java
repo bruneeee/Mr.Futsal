@@ -1,7 +1,5 @@
 package it.example.nicolobrunello.mrfutsal;
 
-import android.app.Activity;
-import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.view.LayoutInflater;
@@ -61,12 +59,11 @@ public class DettaglioSquadra extends Fragment {
         st.add("Statistica1");
         //TODO prendere dati statistiche
 
-        explistdettagli.setDividerHeight(2);
-        explistdettagli.setGroupIndicator(null);
-        explistdettagli.setClickable(true);
+        //explistdettagli.setDividerHeight(2);
+        //explistdettagli.setGroupIndicator(null);
+        //explistdettagli.setClickable(true);
 
         ExpAdapterDettagli adapter = new ExpAdapterDettagli(getActivity(),el,st,Squadra.getGiocatori(getActivity(),id_squadra));
-        adapter.setInflater(LayoutInflater.from(getActivity()),getActivity());
         explistdettagli.setAdapter(adapter);
 
         return rootView;

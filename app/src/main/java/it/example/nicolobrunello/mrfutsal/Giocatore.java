@@ -35,7 +35,21 @@ public class Giocatore {
         DBHelper dbHelper = new DBHelper(context);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
 
-        Cursor c = db.rawQuery("select * from GIOCATORE ",null);
+        Cursor c = db.rawQuery("select * from GIOCATORE WHERE is_portiere = 0",null);
+
+        while(c.moveToNext()) {
+            giocatori.add(new Giocatore(c.getInt(0), c.getString(1), c.getString(2), c.getString(3), c.getInt(4)));
+        }
+
+        return giocatori;
+    }
+
+    public static ArrayList<Giocatore> getPortieri(Context context){
+        ArrayList<Giocatore> giocatori = new ArrayList<Giocatore>();
+        DBHelper dbHelper = new DBHelper(context);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+        Cursor c = db.rawQuery("select * from GIOCATORE WHERE is_portiere = 1",null);
 
         while(c.moveToNext()) {
             giocatori.add(new Giocatore(c.getInt(0), c.getString(1), c.getString(2), c.getString(3), c.getInt(4)));
@@ -55,7 +69,6 @@ public class Giocatore {
         contentValues.put("dataNascita", d);
         contentValues.put("is_portiere", r);
         db.insert("giocatore", null, contentValues);
-
     }
 
     public static void deleteAll(Context context){
@@ -84,7 +97,6 @@ public class Giocatore {
     public String getData_n() {
         return data_n;
     }
-
 
     public int getIsPortiere() {
         return isPortiere;

@@ -8,6 +8,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import java.util.ArrayList;
 
@@ -24,6 +25,7 @@ public class Squadra {
         this.id=id;
         this.nome=nome;
         this.stagione=s;
+        Log.e("ID_SQUADRA",String.valueOf(id));
     }
 
     public static ArrayList<Squadra> getSquadre(Context context,int stagione){

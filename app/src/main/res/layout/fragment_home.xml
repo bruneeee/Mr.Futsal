@@ -14,7 +14,7 @@
         android:text="Mr. Futsal"
         android:id="@+id/txttitolo"
         android:textStyle="bold"
-        android:textSize="80sp" />
+        android:textSize="75sp" />
 
     <Button
         android:layout_width="wrap_content"
@@ -32,7 +32,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="go to new_giocatore"
+        android:text="go to partite"
         android:id="@+id/btnnewgiocatore" />
 </LinearLayout>
 
