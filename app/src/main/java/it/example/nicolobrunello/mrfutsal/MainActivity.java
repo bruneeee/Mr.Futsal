@@ -19,14 +19,7 @@ import android.support.v4.widget.DrawerLayout;
 public class MainActivity extends Activity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks {
 
-    /**
-     * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
-     */
     private NavigationDrawerFragment mNavigationDrawerFragment;
-
-    /**
-     * Used to store the last screen title. For use in {@link #restoreActionBar()}.
-     */
     private CharSequence mTitle;
 
     @Override
@@ -48,6 +41,8 @@ public class MainActivity extends Activity
     public void onNavigationDrawerItemSelected(int position) {
         FragmentManager fragmentManager = getFragmentManager();
         Fragment fragment = null;
+        Bundle bundle = new Bundle();
+
         switch (position)
         {
             case 0:
@@ -60,7 +55,13 @@ public class MainActivity extends Activity
                 fragment = Fragment.instantiate(this, ViewGiocatori.class.getName());
                 break;
             case 3:
-                fragment = Fragment.instantiate(this, ViewPartite.class.getName());
+                fragment = Fragment.instantiate(this, ModificaGiocatore.class.getName());
+                bundle.putString("cognome","cognome1");
+                bundle.putString("nome","nome1");
+                bundle.putString("datanascita","11/11/1111");
+                bundle.putInt("id",-1);
+                bundle.putInt("is_portiere",1);
+                fragment.setArguments(bundle);
                 break;
             default:
                 fragment = Fragment.instantiate(this, ViewHome.class.getName());
@@ -130,20 +131,10 @@ public class MainActivity extends Activity
         return super.onOptionsItemSelected(item);
     }
 
-    /**
-     * A placeholder fragment containing a simple view.
-     */
     public static class PlaceholderFragment extends Fragment {
-        /**
-         * The fragment argument representing the section number for this
-         * fragment.
-         */
+
         private static final String ARG_SECTION_NUMBER = "section_number";
 
-        /**
-         * Returns a new instance of this fragment for the given section
-         * number.
-         */
         public static PlaceholderFragment newInstance(int sectionNumber) {
             PlaceholderFragment fragment = new PlaceholderFragment();
             Bundle args = new Bundle();

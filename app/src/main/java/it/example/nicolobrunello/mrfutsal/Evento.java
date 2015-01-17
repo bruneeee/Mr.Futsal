@@ -22,19 +22,27 @@ public class Evento {
         this.descr = descr;
     }
 
-    public static ArrayList<Evento> getEventi(Context context){
+    public static ArrayList<Evento> getEventi(Context context) {
         ArrayList<Evento> eventi = new ArrayList<Evento>();
 
         DBHelper dbHelper = new DBHelper(context);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
 
-        Cursor c = db.rawQuery("select * from EVENTO",null);
+        Cursor c = db.rawQuery("select * from EVENTO", null);
 
-        while(c.moveToNext()) {
+        while (c.moveToNext()) {
             eventi.add(new Evento(c.getInt(0), c.getString(1)));
         }
 
         return eventi;
+    }
+
+    public static int getNumEventi(int id, ArrayList<Evento> e) {
+        int c = 0;
+        for (int i = 0; i < e.size(); i++)
+            if (e.get(i).getId() == id)
+                c++;
+        return c;
     }
 
     public static void addEvento(Context context,String descr){
@@ -51,6 +59,21 @@ public class Evento {
         DBHelper dbHelper = new DBHelper(context);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         db.delete("evento",null,null);
+    }
+
+    public static Evento getEvento(Context context,int id){
+        Evento e = new Evento();
+        DBHelper dbHelper = new DBHelper(context);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+        String sql = String.format("select * from EVENTO WHERE id=%d",id);
+
+        Cursor c = db.rawQuery(sql,null);
+
+        while(c.moveToNext()) {
+            e = (new Evento(c.getInt(0), c.getString(1)));
+        }
+        return e;
     }
 
     public String getDescr() {

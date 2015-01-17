@@ -41,6 +41,15 @@ public class Convocazione {
 
         return giocatori;
     }
+
+    public static int getnumPartite(Context context,int id_g){
+        DBHelper dbHelper = new DBHelper(context);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        String sql =String.format("SELECT * FROM giocatore_id = %d ",id_g );
+        Cursor c = db.rawQuery(sql,null);
+        return c.getCount();
+    }
+
     public static void addConvocazione(Context context,int id_g,int id_p){
         DBHelper dbHelper = new DBHelper(context);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
@@ -56,13 +65,6 @@ public class Convocazione {
         DBHelper dbHelper = new DBHelper(context);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         db.delete("convocati",null,null);
-    }
-
-    public static void replaceGiocatore(Context context ,int id ,String c ,String n ,String d ,int r ){
-        DBHelper dbHelper = new DBHelper(context);
-        SQLiteDatabase db = dbHelper.getWritableDatabase();
-        String sql="";//TODO stringa per aggiornamento
-        db.execSQL(sql);
     }
 
     public int getId_giocatore() {

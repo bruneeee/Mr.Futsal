@@ -20,7 +20,7 @@ public class DBHelper extends SQLiteOpenHelper {
     private static final String TABLE_EVENTO = "CREATE TABLE IF NOT EXISTS evento       (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE, descr VARCHAR(45) NULL);";
     private static final String TABLE_CONVOCATI = "CREATE TABLE IF NOT EXISTS convocati (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE, giocatore_id INTEGER NOT NULL ,partita_id INTEGER NOT NULL)";
     private static final String TABLE_GIOCSQUADRA="CREATE TABLE IF NOT EXISTS giocatore_has_squadra (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE,giocatore_id INTEGER NOT NULL ,squadra_id INTEGER  NOT NULL ,id_stagione INTEGER  NOT NULL );";
-    private static final String TABLE_EVCONVOCATO = "CREATE TABLE IF NOT EXISTS Evento_has_convocati` ( evento_id INTEGER PRIMARY KEY  NOT NULL UNIQUE, id_giocatore INTEGER PRIMARY KEY  NOT NULL UNIQUE, id_partita INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE);";
+    private static final String TABLE_EVCONVOCATO = "CREATE TABLE IF NOT EXISTS evento_has_convocati (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE,  evento_id INTEGER NOT NULL, id_giocatore INTEGER NOT NULL, id_partita INTEGER NOT NULL);";
 
     public DBHelper (Context context)
     {
@@ -37,6 +37,7 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL(TABLE_EVENTO);
         db.execSQL(TABLE_CONVOCATI);
         db.execSQL(TABLE_GIOCSQUADRA);
+        db.execSQL(TABLE_EVCONVOCATO);
     }
 
     @Override

@@ -69,17 +69,17 @@ public class ViewGiocatori extends Fragment {
         /*
         giocatori.add(new Giocatore(1,"Barla","Michele","11/11/1111","Descr",10,10));
         */
-        Giocatore.deleteAll(getActivity());
-        Giocatore.addGiocatore(getActivity(),"Nome","Cognome","11/11/1111",1);
-        Giocatore.addGiocatore(getActivity(),"Nome1","Cognome1","11/11/1111",0);
-        Giocatore.addGiocatore(getActivity(),"Nome2","Cognome2","11/11/1111",0);
-        Giocatore.addGiocatore(getActivity(),"Nome3","Cognome3","11/11/1111",0);
-        Giocatore.addGiocatore(getActivity(),"Nome4","Cognome4","11/11/1111",1);
-        Giocatore.addGiocatore(getActivity(),"Nome5","Cognome5","11/11/1111",1);
-        Giocatore.addGiocatore(getActivity(),"Nome6","Cognome6","11/11/1111",0);
-        Giocatore.addGiocatore(getActivity(),"Nome7","Cognome7","11/11/1111",0);
-        Giocatore.addGiocatore(getActivity(),"Nome8","Cognome8","11/11/1111",0);
-        Giocatore.addGiocatore(getActivity(),"Nome9","Cognome9","11/11/1111",1);
+        /*Giocatore.deleteAll(getActivity());
+        Giocatore.addGiocatore(getActivity(),"Cognome","Nome","11/11/1111",1);
+        Giocatore.addGiocatore(getActivity(),"Cognome1","Nome1","11/11/1111",0);
+        Giocatore.addGiocatore(getActivity(),"Cognome2","Nome2","11/11/1111",0);
+        Giocatore.addGiocatore(getActivity(),"Cognome3","Nome3","11/11/1111",0);
+        Giocatore.addGiocatore(getActivity(),"Cognome4","Nome4","11/11/1111",1);
+        Giocatore.addGiocatore(getActivity(),"Cognome5","Nome5","11/11/1111",1);
+        Giocatore.addGiocatore(getActivity(),"Cognome6","Nome6","11/11/1111",0);
+        Giocatore.addGiocatore(getActivity(),"Cognome7","Nome7","11/11/1111",0);
+        Giocatore.addGiocatore(getActivity(),"Cognome8","Nome8","11/11/1111",0);
+        Giocatore.addGiocatore(getActivity(),"Cognome9","Nome9","11/11/1111",1);*/
 
         titoli.add("GIOCATORI");
         titoli.add("PORTIERI");

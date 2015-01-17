@@ -38,7 +38,7 @@ public class Giocatore {
         Cursor c = db.rawQuery("select * from GIOCATORE WHERE is_portiere = 0",null);
 
         while(c.moveToNext()) {
-            giocatori.add(new Giocatore(c.getInt(0), c.getString(1), c.getString(2), c.getString(3), c.getInt(4)));
+            giocatori.add(new Giocatore(c.getInt(0), c.getString(2), c.getString(1), c.getString(3), c.getInt(4)));
         }
 
         return giocatori;
@@ -52,7 +52,7 @@ public class Giocatore {
         Cursor c = db.rawQuery("select * from GIOCATORE WHERE is_portiere = 1",null);
 
         while(c.moveToNext()) {
-            giocatori.add(new Giocatore(c.getInt(0), c.getString(1), c.getString(2), c.getString(3), c.getInt(4)));
+            giocatori.add(new Giocatore(c.getInt(0), c.getString(2), c.getString(1), c.getString(3), c.getInt(4)));
         }
 
         return giocatori;

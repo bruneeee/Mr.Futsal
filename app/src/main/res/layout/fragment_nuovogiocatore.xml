@@ -84,28 +84,6 @@
         android:orientation="horizontal"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/ldescrizione"
-        android:layout_marginLeft="5dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Descrizione:"
-            android:id="@+id/lbldescrizione" />
-
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:inputType="textPersonName"
-            android:ems="10"
-            android:id="@+id/txtdescrizione"
-            android:layout_marginLeft="5dp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
         android:id="@+id/lruolo"
         android:layout_marginLeft="5dp">
 
@@ -116,32 +94,26 @@
             android:id="@+id/lblruolo"
             android:layout_gravity="center_horizontal" />
 
-        <Spinner
+        <RadioGroup
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/spinnerruolo"
-            android:layout_marginLeft="20dp" />
+            android:id="@+id/radiogroup">
 
-    </LinearLayout>
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Giocatore"
+                android:id="@+id/rbgiocatore"
+                android:checked="true" />
 
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/lsquadra"
-        android:layout_marginLeft="5dp">
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Portiere"
+                android:id="@+id/rbportiere"
+                android:checked="false" />
+        </RadioGroup>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Squadra:"
-            android:id="@+id/lblsquadra" />
-
-        <Spinner
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/spinnersquadra"
-            android:layout_marginLeft="20dp" />
     </LinearLayout>
 
     <LinearLayout
@@ -152,14 +124,14 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Annulla"
-            android:id="@+id/btnannulla" />
+            android:text="Aggiorna"
+            android:id="@+id/btnaggiorna" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Aggiorna"
-            android:id="@+id/btnaggiorna" />
+            android:text="Annulla"
+            android:id="@+id/btnannulla" />
     </LinearLayout>
 
 </LinearLayout>
